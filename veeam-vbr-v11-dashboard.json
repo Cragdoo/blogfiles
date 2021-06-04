@@ -1,0 +1,697 @@
+{
+	"id": "a975b77a-e9b3-4212-af17-93e24faf2b14",
+	"type": "page/dashboard",
+	"title": "Veeam v11 - Examples",
+	"content": {
+		"_type": "layout/list",
+		"contents": [
+			{
+				"_type": "layout/column",
+				"columns": [
+					{
+						"contents": [
+							{
+								"_type": "layout/list",
+								"contents": [
+									{
+										"_type": "tile/generic-webapi-donut",
+										"config": {
+											"context": {},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"columns": {
+													"aggregation": "count",
+													"isCategoryOptional": false,
+													"values": [],
+													"category": "{{lastResult}}"
+												},
+												"provider": "veeam-vbr-v11",
+												"url": "jobs/states",
+												"keypath": "data"
+											},
+											"display": {
+												"sizeMode": "fill",
+												"legendScale": 83,
+												"showLegend": true,
+												"legendPosition": "right",
+												"palette": 3
+											}
+										},
+										"title": "Jobs Overview",
+										"description": ""
+									}
+								]
+							}
+						],
+						"width": 43.886
+					},
+					{
+						"width": 56.114,
+						"contents": [
+							{
+								"_type": "layout/list",
+								"contents": [
+									{
+										"_type": "tile/generic-webapi-status",
+										"config": {
+											"context": {
+												"sign": true
+											},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"healthTransform": {
+													"healthTemplate": "{{lastResult}}",
+													"healthyValue": null,
+													"warningValue": null,
+													"criticalValue": null,
+													"states": [
+														{
+															"key": "Healthy",
+															"value": "Success"
+														},
+														{
+															"key": "Warning",
+															"value": "Warning"
+														},
+														{
+															"key": "Critical",
+															"value": "Failed"
+														}
+													],
+													"hideUninitialized": true
+												},
+												"provider": "veeam-vbr-v11",
+												"url": "jobs/states?lastResultFilter=Success",
+												"headers": [
+													{
+														"key": "x-api-version",
+														"value": "1.0-rev1"
+													}
+												],
+												"keypath": "data"
+											},
+											"display": {
+												"label": "custom",
+												"sublabel": "custom",
+												"drilldownTemplate": "",
+												"customLabel": "{{properties.name}}",
+												"zoom": "list",
+												"sort": {
+													"property": "healthState",
+													"order": "asc"
+												},
+												"sublabelCustomLabel": "{{properties.type}}"
+											}
+										},
+										"description": "",
+										"title": "Successful Jobs"
+									},
+									{
+										"_type": "tile/generic-webapi-status",
+										"config": {
+											"context": {
+												"sign": true
+											},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"healthTransform": {
+													"healthTemplate": "{{lastResult}}",
+													"healthyValue": null,
+													"warningValue": null,
+													"criticalValue": null,
+													"states": [
+														{
+															"key": "Healthy",
+															"value": "Success"
+														},
+														{
+															"key": "Warning",
+															"value": "Warning"
+														},
+														{
+															"key": "Critical",
+															"value": "Failed"
+														}
+													],
+													"hideUninitialized": true
+												},
+												"provider": "veeam-vbr-v11",
+												"url": "jobs/states?lastResultFilter=Warning",
+												"headers": [
+													{
+														"key": "x-api-version",
+														"value": "1.0-rev1"
+													}
+												],
+												"keypath": "data"
+											},
+											"display": {
+												"label": "custom",
+												"sublabel": "custom",
+												"drilldownTemplate": "",
+												"customLabel": "{{properties.name}}",
+												"zoom": "list",
+												"sort": {
+													"property": "healthState",
+													"order": "asc"
+												},
+												"sublabelCustomLabel": "{{properties.type}}"
+											}
+										},
+										"description": "",
+										"title": "Warning Jobs"
+									},
+									{
+										"_type": "tile/generic-webapi-status",
+										"config": {
+											"context": {
+												"sign": true
+											},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"healthTransform": {
+													"healthTemplate": "{{lastResult}}",
+													"healthyValue": null,
+													"warningValue": null,
+													"criticalValue": null,
+													"states": [
+														{
+															"key": "Healthy",
+															"value": "Success"
+														},
+														{
+															"key": "Warning",
+															"value": "Warning"
+														},
+														{
+															"key": "Critical",
+															"value": "Failed"
+														}
+													],
+													"hideUninitialized": true
+												},
+												"provider": "veeam-vbr-v11",
+												"url": "jobs/states?lastResultFilter=Failed",
+												"headers": [
+													{
+														"key": "x-api-version",
+														"value": "1.0-rev1"
+													}
+												],
+												"keypath": "data"
+											},
+											"display": {
+												"label": "custom",
+												"sublabel": "custom",
+												"drilldownTemplate": "",
+												"customLabel": "{{properties.name}}",
+												"zoom": "list",
+												"sort": {
+													"property": "healthState",
+													"order": "asc"
+												},
+												"sublabelCustomLabel": "{{properties.type}}"
+											}
+										},
+										"description": "",
+										"title": "Failed Jobs"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"_type": "layout/column",
+				"columns": [
+					{
+						"width": 100,
+						"contents": [
+							{
+								"_type": "layout/list",
+								"contents": [
+									{
+										"_type": "layout/column",
+										"columns": [
+											{
+												"width": 32.856,
+												"contents": [
+													{
+														"_type": "layout/list",
+														"contents": [
+															{
+																"_type": "tile/generic-webapi-donut",
+																"config": {
+																	"context": {},
+																	"source": {
+																		"_security": "signing",
+																		"method": "GET",
+																		"columns": {
+																			"aggregation": "none",
+																			"isCategoryOptional": false,
+																			"values": [
+																				{
+																					"key": "Free Space (GB)",
+																					"value": "{{freeGB}}"
+																				},
+																				{
+																					"key": "Used Space (GB)",
+																					"value": "{{usedSpaceGB}}"
+																				}
+																			],
+																			"category": "{{name}}"
+																		},
+																		"provider": "veeam-vbr-v11",
+																		"url": "backupInfrastructure/repositories/states?nameFilter=CD-LAB-REPO1",
+																		"keypath": "data",
+																		"__signed": {
+																			"payload": {
+																				"_security": "signing",
+																				"method": "GET",
+																				"columns": {
+																					"aggregation": "none",
+																					"isCategoryOptional": false,
+																					"values": [
+																						{
+																							"key": "Free Space (GB)",
+																							"value": "{{freeGB}}"
+																						},
+																						{
+																							"key": "Used Space (GB)",
+																							"value": "{{usedSpaceGB}}"
+																						}
+																					],
+																					"category": "{{name}}"
+																				},
+																				"provider": "veeam-vbr-v11",
+																				"url": "backupInfrastructure/repositories/states?nameFilter=CD-LAB-REPO1",
+																				"keypath": "data"
+																			},
+																			"signature": "2af84ec4ec2dfc92724c03584190858345353f9a43e77d2bae246caa373826ab07927ede2319e29ca862ce6113a88e25+1622734730200"
+																		}
+																	},
+																	"display": {
+																		"sizeMode": "default",
+																		"legendScale": 1,
+																		"showLegend": true,
+																		"legendPosition": "right",
+																		"palette": 7
+																	}
+																},
+																"title": "REPO1 Disk Space",
+																"description": ""
+															}
+														]
+													}
+												]
+											},
+											{
+												"width": 67.144,
+												"contents": [
+													{
+														"_type": "layout/list",
+														"contents": [
+															{
+																"_type": "layout/column",
+																"columns": [
+																	{
+																		"width": 50,
+																		"contents": [
+																			{
+																				"_type": "layout/list",
+																				"contents": [
+																					{
+																						"_type": "tile/generic-webapi-donut",
+																						"config": {
+																							"context": {},
+																							"source": {
+																								"_security": "signing",
+																								"method": "GET",
+																								"columns": {
+																									"aggregation": "none",
+																									"isCategoryOptional": false,
+																									"values": [
+																										{
+																											"key": "Free Space (GB)",
+																											"value": "{{freeGB}}"
+																										},
+																										{
+																											"key": "Used Space (GB)",
+																											"value": "{{usedSpaceGB}}"
+																										}
+																									],
+																									"category": "{{name}}"
+																								},
+																								"provider": "generic",
+																								"url": "backupInfrastructure/repositories/states?nameFilter=CD-LAB-ReFS1",
+																								"keypath": "data"
+																							},
+																							"display": {
+																								"sizeMode": "default",
+																								"legendScale": 1,
+																								"showLegend": true,
+																								"legendPosition": "right",
+																								"palette": 8
+																							}
+																						},
+																						"title": "ReFS1 Disk Space",
+																						"description": ""
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"width": 50,
+																		"contents": [
+																			{
+																				"_type": "layout/list",
+																				"contents": [
+																					{
+																						"_type": "tile/generic-webapi-donut",
+																						"config": {
+																							"context": {},
+																							"source": {
+																								"_security": "signing",
+																								"method": "GET",
+																								"columns": {
+																									"aggregation": "none",
+																									"isCategoryOptional": false,
+																									"values": [
+																										{
+																											"key": "Free Space (GB)",
+																											"value": "{{freeGB}}"
+																										},
+																										{
+																											"key": "Used Space (GB)",
+																											"value": "{{usedSpaceGB}}"
+																										}
+																									],
+																									"category": "{{name}}"
+																								},
+																								"provider": "generic",
+																								"url": "backupInfrastructure/repositories/states?nameFilter=CD-LAB-COPY1",
+																								"keypath": "data"
+																							},
+																							"display": {
+																								"sizeMode": "default",
+																								"legendScale": 31,
+																								"showLegend": true,
+																								"legendPosition": "right",
+																								"palette": 6
+																							}
+																						},
+																						"title": "BACKUP COPY1 Disk Space",
+																						"description": ""
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"_type": "tile/generic-webapi-table",
+										"config": {
+											"context": {},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"provider": "veeam-vbr-v11",
+												"url": "jobs/states",
+												"headers": [
+													{
+														"key": "x-api-version",
+														"value": "1.0-rev1"
+													}
+												],
+												"keypath": "data"
+											},
+											"display": {
+												"showHeaders": true,
+												"columnOverrides": {
+													"name": {
+														"displayName": "Name"
+													},
+													"status": {
+														"displayName": "Status"
+													},
+													"lastResult": {
+														"displayName": "Last Result"
+													},
+													"type": {
+														"displayName": "Type"
+													},
+													"workload": {
+														"displayName": "Job workload"
+													},
+													"description": {
+														"displayName": "Description"
+													},
+													"lastRun": {
+														"displayName": "Last Run "
+													},
+													"nextRun": {
+														"displayName": "Next Run"
+													},
+													"repositoryName": {
+														"displayName": "Target Repo"
+													},
+													"objectsCount": {
+														"displayName": "Job item count"
+													}
+												},
+												"customColumns": {},
+												"columns": [
+													"name",
+													"status",
+													"lastResult",
+													"type",
+													"workload",
+													"description",
+													"lastRun",
+													"nextRun",
+													"repositoryName",
+													"objectsCount"
+												],
+												"autohide": false,
+												"rowLink": ""
+											}
+										},
+										"description": "",
+										"title": "Jobs - Details"
+									},
+									{
+										"_type": "tile/generic-webapi-status",
+										"config": {
+											"context": {
+												"sign": true
+											},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"healthTransform": {
+													"healthTemplate": "{{lastResult}}",
+													"healthyValue": null,
+													"warningValue": null,
+													"criticalValue": null,
+													"states": [
+														{
+															"key": "Healthy",
+															"value": "Success"
+														},
+														{
+															"key": "Warning",
+															"value": "Warning"
+														},
+														{
+															"key": "Critical",
+															"value": "Failed"
+														}
+													],
+													"hideUninitialized": true
+												},
+												"provider": "generic",
+												"url": "jobs/states",
+												"headers": [
+													{
+														"key": "x-api-version",
+														"value": "1.0-rev1"
+													}
+												],
+												"keypath": "data"
+											},
+											"display": {
+												"label": "custom",
+												"sublabel": "custom",
+												"drilldownTemplate": "",
+												"customLabel": "{{properties.name}}",
+												"zoom": "column",
+												"sort": {
+													"property": "healthState",
+													"order": "asc"
+												},
+												"sublabelCustomLabel": "{{properties.type}}"
+											}
+										},
+										"description": "",
+										"title": "Last Job Result"
+									},
+									{
+										"_type": "tile/generic-webapi-table",
+										"config": {
+											"context": {},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"provider": "veeam-vbr-v11",
+												"url": "backupObjects",
+												"headers": [],
+												"keypath": "data"
+											},
+											"display": {
+												"showHeaders": true,
+												"columnOverrides": {
+													"name": {
+														"displayName": "Name"
+													},
+													"platformName": {
+														"displayName": "Platform"
+													},
+													"objectId": {
+														"displayName": "Object ID"
+													},
+													"path": {
+														"displayName": "Object Path"
+													},
+													"restorePointsCount": {
+														"displayName": "Restore Points - Count"
+													},
+													"type": {
+														"displayName": "Type"
+													}
+												},
+												"customColumns": {},
+												"columns": [
+													"name",
+													"platformName",
+													"objectId",
+													"path",
+													"restorePointsCount",
+													"type"
+												],
+												"autohide": false
+											}
+										},
+										"description": "",
+										"title": "Backup Objects"
+									},
+									{
+										"_type": "tile/generic-webapi-table",
+										"config": {
+											"context": {},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"provider": "veeam-vbr-v11",
+												"url": "sessions?limit=10",
+												"headers": [],
+												"keypath": "data"
+											},
+											"display": {
+												"showHeaders": true,
+												"columnOverrides": {
+													"name": {
+														"displayName": "Name"
+													},
+													"result": {
+														"displayName": "Result",
+														"template": "{{value.result}}"
+													},
+													"custom_column_1": {
+														"displayName": "Message",
+														"template": "{{value.result.message.substr(0,75)}}"
+													}
+												},
+												"customColumns": {
+													"custom_column_1": "",
+													"custom_column_2": ""
+												},
+												"columns": [
+													"name",
+													"result",
+													"custom_column_1",
+													"sessionType",
+													"custom_column_2"
+												],
+												"autohide": false,
+												"rowLink": ""
+											}
+										},
+										"description": "",
+										"title": "Last 10 Session Details"
+									},
+									{
+										"_type": "tile/generic-webapi-table",
+										"config": {
+											"context": {},
+											"source": {
+												"_security": "signing",
+												"method": "GET",
+												"provider": "Veeam-vbr-v11",
+												"url": "serverCertificate",
+												"headers": [],
+												"keypath": "",
+												"__signed": {
+													"payload": {
+														"_security": "signing",
+														"method": "GET",
+														"provider": "Veeam-vbr-v11",
+														"url": "serverCertificate",
+														"headers": [],
+														"keypath": ""
+													},
+													"signature": "4414c8092d04b7c0b66f020b4fa42e779acef5d8a630eeef0a1d7e8a7f0fafaffa30c72057f4d7221e0a91ec7832e833+1622734730207"
+												}
+											},
+											"display": {
+												"showHeaders": true,
+												"columnOverrides": {},
+												"customColumns": {},
+												"columns": [
+													"issuedTo",
+													"issuedBy",
+													"validFrom",
+													"validBy"
+												],
+												"autohide": false
+											}
+										},
+										"description": "",
+										"title": "Backup Server Certificate"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	"derivedFrom": "00000000-0000-0000-0000-000000000000",
+	"draft": false,
+	"openAccess": {
+		"enabled": false
+	}
+}
